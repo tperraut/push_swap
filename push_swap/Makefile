@@ -29,7 +29,7 @@ CFLAGS = -O3 -Werror -Wall -Wextra
 
 INC_DIR = ./include/
 INC_NAME = \
-		push_swap.h
+	push_swap.h
 INCLUDE = $(addprefix $(INC_DIR), $(INC_NAME))
 INC = -I $(INC_DIR)
 
@@ -56,11 +56,13 @@ OBJ = $(addprefix $(OBJ_DIR), $(OBJ_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^ $(INC)
+$(NAME): $(OBJ_DIR) $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) $(INC)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDE)
-	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $< $(INC)
 
 clean:
