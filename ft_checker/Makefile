@@ -6,7 +6,7 @@
 #    By: tperraut <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 15:54:33 by tperraut          #+#    #+#              #
-#*   Updated: 2017/12/07 15:00:03 by tperraut         ###   ########.fr       *#
+#*   Updated: 2017/12/08 14:09:26 by tperraut         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,14 @@
 ##########
 
 NAME = checker
+
+#######
+# LIB #
+#######
+
+LIB = -lft
+LIB_DIR = ../libft
+LIB_INC = -I $(LIB_DIR)/include
 
 ############
 # COMPILER #
@@ -60,8 +68,14 @@ OBJ = $(addprefix $(OBJ_DIR), $(OBJ_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) $(INC)
+$(NAME): $(LIB) $(OBJ_DIR) $(OBJ)
+	$(CC) $(CFLAGS) -o $@ \
+		$(OBJ) \
+		$(INC) \
+		$(LIB_INC) -L $(LIB_DIR) $(LIB)
+
+$(LIB):
+	make -C $(LIB_DIR)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
@@ -80,4 +94,4 @@ re: fclean all
 norme: $(SRC) $(INCLUDE)
 	norminette $^
 
-.PHONY: all clean fclean re norme
+.PHONY: all clean fclean re norme $(LIB)

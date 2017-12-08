@@ -6,7 +6,7 @@
 #    By: tperraut <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 15:54:33 by tperraut          #+#    #+#              #
-#*   Updated: 2016/07/06 14:08:25 by tperraut         ###   ########.fr       *#
+#*   Updated: 2017/12/08 14:04:46 by tperraut         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,15 @@
 # TARGET #
 ##########
 
-NAME_1 = checker
-NAME_1_DIR = ./checker/
-TARGET_1 = $(addprefix $(NAME_1_DIR), $(NAME_1))
+NAMES = \
+	ft_checker/checker \
+	ft_push_swap/push_swap
 
-NAME_2 = push_swap
-NAME_2_DIR = ./push_swap/
-TARGET_2 = $(addprefix $(NAME_1_DIR), $(NAME_1))
+#######
+# LIB #
+#######
+
+LIB = libft/libft.a
 
 ############
 # COMPILER #
@@ -33,28 +35,26 @@ CFLAGS = -O3 -Werror -Wall -Wextra
 # RULES #
 #########
 
-all: $(NAME_1) $(NAME_2)
+all: $(LIB) $(NAMES)
 
-$(NAME_1):
-	make -C $(NAME_1_DIR)
-	cp $(TARGET_1) ./
+$(LIB):
+	make -C $(@D)
 
-$(NAME_1):
-	make -C $(NAME_2_DIR)
-	cp $(TARGET_2) ./
+$(NAMES):
+	make -C $(@D)
+	cp $@ $(@F)
 
-clean:
-	make clean -C $(NAME_1_DIR)
-	make clean -C $(NAME_2_DIR)
+clean: $(dir $(NAMES)) $(dir $(LIB))
+	$(foreach d, $^, make clean -C $(d);)
 
-fclean:
-	make fclean -C $(NAME_1_DIR)
-	make fclean -C $(NAME_2_DIR)
+fclean: $(dir $(NAMES)) $(dir $(LIB))
+	$(foreach d, $^, make fclean -C $(d);)
+	rm -f $(notdir $(NAMES))
+
 
 re: fclean all
 
-norme:
-	make norme -C $(NAME_1_DIR)
-	make norme -C $(NAME_2_DIR)
+norme: $(NAMES)
+	make -C $(<D)
 
-.PHONY: all clean fclean re norme
+.PHONY: all clean fclean re norme $(LIB) $(NAMES)
