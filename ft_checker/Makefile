@@ -6,7 +6,7 @@
 #    By: tperraut <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 15:54:33 by tperraut          #+#    #+#              #
-#*   Updated: 2017/12/08 14:09:26 by tperraut         ###   ########.fr       *#
+#*   Updated: 2017/12/12 11:51:23 by tperraut         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRC_NAME = \
 	ft_create_elem.c \
 	ft_init_stack.c \
 	ft_swap.c \
-	ft_2swap.c
+	ft_2swap.c \
+	ft_execute.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 
 ##########
@@ -81,7 +82,7 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDE)
-	$(CC) $(CFLAGS) -o $@ -c $< $(INC)
+	$(CC) $(CFLAGS) -o $@ -c $< $(INC) $(LIB_INC)
 
 clean:
 	rm -rf $(OBJ_DIR)

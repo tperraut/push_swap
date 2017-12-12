@@ -20,6 +20,8 @@ typedef struct	s_stack
 
 void	ft_init_stack(t_stack *s);
 void	ft_swap(t_stack *s);
+void	ft_2swap(t_stack *s1, t_stack *s2);
 t_elem	*ft_create_elem(int n);
+int		ft_execute(char *s, t_stack *a, t_stack *b);
 
 #endif
