@@ -6,7 +6,7 @@
 /*   By: tperraut <tperraut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 11:11:02 by tperraut          #+#    #+#             */
-/*   Updated: 2017/12/07 14:51:33 by tperraut         ###   ########.fr       */
+/*   Updated: 2017/12/15 13:30:19 by tperraut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void		push(t_elem *e, t_stack *s)
 {
+	if (!e)
+		return ;
 	if (!(s->head))
 	{
 		s->head = e;
@@ -48,12 +50,14 @@ static t_elem	*pop(t_stack *s)
 
 static void		rotate(t_stack *s)
 {
-	s->head = (s->head)->prev;
+	if (s->head)
+		s->head = (s->head)->prev;
 }
 
 static void		rrotate(t_stack *s)
 {
-	s->head = (s->head)->next;
+	if (s->head)
+		s->head = (s->head)->next;
 }
 
 void			ft_init_stack(t_stack *s){

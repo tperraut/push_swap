@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_printstack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tperraut <tperraut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 11:14:22 by tperraut          #+#    #+#             */
-/*   Updated: 2017/12/15 13:42:15 by tperraut         ###   ########.fr       */
+/*   Created: 2017/12/15 13:31:15 by tperraut          #+#    #+#             */
+/*   Updated: 2017/12/15 13:38:24 by tperraut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "libft.h"
 
-void	ft_swap(t_stack *s)
+void	ft_printstack(t_stack *s)
 {
-	int	tmp;
+	t_elem	*e;
 
-	if (s->head == (s->head)->next)
-		return ;
-	tmp = (s->head)->data;
-	(s->head)->data = ((s->head)->prev)->data;
-	((s->head)->prev)->data = tmp;
+	e = s->head;
+	if (e)
+	{
+		while (e->prev != s->head)
+		{
+			ft_putnbr(e->data);
+			ft_putchar('\n');
+			e = e->prev;
+		}
+		ft_putnbr(e->data);
+		ft_putchar('\n');
+	}
+	ft_putchar('\n');
 }

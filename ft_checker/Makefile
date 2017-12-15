@@ -6,7 +6,7 @@
 #    By: tperraut <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 15:54:33 by tperraut          #+#    #+#              #
-#*   Updated: 2017/12/12 11:51:23 by tperraut         ###   ########.fr       *#
+#*   Updated: 2017/12/15 14:06:26 by tperraut         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,9 @@ SRC_NAME = \
 	ft_init_stack.c \
 	ft_swap.c \
 	ft_2swap.c \
-	ft_execute.c
+	ft_execute.c \
+	ft_printstack.c \
+	ft_issort.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 
 ##########

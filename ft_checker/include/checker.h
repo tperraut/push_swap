@@ -2,6 +2,10 @@
 # define __CHECKER_H__
 # include <stdlib.h>
 
+#define OK_MSG "OK\n"
+#define KO_MSG "KO\n"
+
+
 typedef struct	s_elem
 {
 	int		data;
@@ -23,5 +27,7 @@ void	ft_swap(t_stack *s);
 void	ft_2swap(t_stack *s1, t_stack *s2);
 t_elem	*ft_create_elem(int n);
 int		ft_execute(char *s, t_stack *a, t_stack *b);
+void	ft_printstack(t_stack *s);
+void	ft_issort(t_stack *s1, t_stack *s2);
 
 #endif
