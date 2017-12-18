@@ -21,24 +21,26 @@ int	main(int ac, char **av)
 	printf("%d\n", ac); //DEBUG
 	while (--ac)
 	{
-		//TODO Add is_contain for stack
 		i = max;
 		t[ac] = ft_stratoi(&(av[ac]));
 		while (--i > ac)
 			if (t[ac] == t[i])
 				ft_error(ER_MSG);
-		a.push(ft_create_elem(t[ac]), &a); //TODO Free elem at the end
+		a.push(ft_create_elem(t[ac]), &a);
 	}
 	while ((rd = get_next_line(STDIN, &line)) > 0)
 		if (ft_execute(line, &a, &b) < 0)
 			ft_error(ER_MSG);
 		else
 		{
-			ft_printstack(&a);
-			ft_printstack(&b);
+			ft_printstack(&a); //DEBUG
+			ft_printstack(&b); //DEBUG
+			free(line);
 		}
 	if (rd < 0)
 		ft_error(ER_MSG);
 	ft_issort(&a, &b);
+	ft_freestack(&a);
+	ft_freestack(&b);
 	return (1);
 }

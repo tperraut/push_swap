@@ -6,7 +6,7 @@
 #    By: tperraut <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/06 15:54:33 by tperraut          #+#    #+#              #
-#*   Updated: 2017/12/08 14:04:46 by tperraut         ###   ########.fr       *#
+#*   Updated: 2017/12/18 16:40:17 by tperraut         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,10 +51,6 @@ fclean: $(dir $(NAMES)) $(dir $(LIB))
 	$(foreach d, $^, make fclean -C $(d);)
 	rm -f $(notdir $(NAMES))
 
-
 re: fclean all
 
-norme: $(NAMES)
-	make -C $(<D)
-
-.PHONY: all clean fclean re norme $(LIB) $(NAMES)
+.PHONY: all clean fclean re $(LIB) $(NAMES)
