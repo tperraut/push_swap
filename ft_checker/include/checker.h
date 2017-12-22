@@ -5,7 +5,7 @@
 #define OK_MSG "OK\n"
 #define KO_MSG "KO\n"
 
-
+/* NEED CHANGES (USE A SIMPLE ARRAY WITH START AND END)*/
 typedef struct	s_elem
 {
 	int		data;
@@ -21,6 +21,7 @@ typedef struct	s_stack
 	void	(*rrot)(struct s_stack *s);
 	t_elem	*(*pop)(struct s_stack *s);
 }				t_stack;
+/* END NEED CHANGES */
 
 void	ft_init_stack(t_stack *s);
 void	ft_swap(t_stack *s);
