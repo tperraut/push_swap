@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	{
 		i = max;
 		t[ac] = ft_stratoi(&(av[ac]));
-		while (--i > ac)
+		while (--i > ac) // CHANGE FOR A HEAP
 			if (t[ac] == t[i])
 				ft_error(ER_MSG);
 		a.push(ft_create_elem(t[ac]), &a);
